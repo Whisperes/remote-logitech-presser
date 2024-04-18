@@ -8,6 +8,7 @@ import uvicorn
 import pyautogui as gui
 
 from utils.logger import logger
+import time
 
 app = FastAPI()
 
@@ -25,7 +26,10 @@ async def key(key: str):
         for k in key:
             if k == '~':
                 k = ' '
-            gui.press(k)
+            gui.keyDown(k)
+            time.sleep(0.2)
+            gui.keyUp(k)
+            time.sleep(0.2)
         logger.info(f"pressed {key}")
         return True
     except Exception as e:
