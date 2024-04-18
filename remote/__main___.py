@@ -23,6 +23,8 @@ async def root():
 async def key(key: str):
     try:
         for k in key:
+            if k == '~':
+                k = ' '
             gui.press(k)
         logger.info(f"pressed {key}")
         return True
