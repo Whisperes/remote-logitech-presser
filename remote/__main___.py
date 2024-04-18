@@ -22,7 +22,8 @@ async def root():
 @app.get("/key/{key}")
 async def key(key: str):
     try:
-        gui.press(key)
+        for k in key:
+            gui.press(k)
         logger.info(f"pressed {key}")
         return True
     except Exception as e:
